@@ -15,16 +15,16 @@ pipeline {
             }
             post {
                 success {
-                    mail to: "syedanfas786@gmail.com",
-                    subject: "Test status success",
-                    body: "Test was success",
-                    attachLog: true
+                    emailext body: 'Test was success',
+                             subject: 'Test status success',
+                             to: 'syedanfas786@gmail.com',
+                             attachLog: true
                 }
                 failure {
-                    mail to: "syedanfas786@gmail.com",
-                    subject: "Test status failure",
-                    body: "Test was failure",
-                    attachLog: true
+                    emailext body: 'Test was failure',
+                             subject: 'Test status failure',
+                             to: 'syedanfas786@gmail.com',
+                             attachLog: true
                 }
             }
         }
@@ -41,16 +41,16 @@ pipeline {
             }
             post {
                 success {
-                    mail to: "syedanfas786@gmail.com",
-                    subject: "Security scan status success",
-                    body: "Security scan was success",
-                    attachLog: true
+                    emailext body: 'Security scan was success',
+                             subject: 'Security scan status success',
+                             to: 'syedanfas786@gmail.com',
+                             attachLog: true
                 }
                 failure {
-                    mail to: "syedanfas786@gmail.com",
-                    subject: "Security scan status failure",
-                    body: "Security scan was failure",
-                    attachLog: true
+                    emailext body: 'Security scan was failure',
+                             subject: 'Security scan status failure',
+                             to: 'syedanfas786@gmail.com',
+                             attachLog: true
                 }
             }
         }
@@ -67,16 +67,16 @@ pipeline {
             }
             post {
                 success {
-                    mail to: "syedanfas786@gmail.com",
-                    subject: "Integration test status success",
-                    body: "Integration test was success",
-                    attachLog: true
+                    emailext body: 'Integration test was success',
+                             subject: 'Integration test status success',
+                             to: 'syedanfas786@gmail.com',
+                             attachLog: true
                 }
                 failure {
-                    mail to: "syedanfas786@gmail.com",
-                    subject: "Integration test status failure",
-                    body: "Integration test was failure",
-                    attachLog: true
+                    emailext body: 'Integration test was failure',
+                             subject: 'Integration test status failure',
+                             to: 'syedanfas786@gmail.com',
+                             attachLog: true
                 }
             }
         }
