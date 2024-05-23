@@ -1,74 +1,61 @@
+
 pipeline {
     agent any
-    
     stages {
         stage('Build') {
             steps {
-                echo "Build was successful"
-                echo "Maven Tool Used"
+                echo 'Building' 
             }
         }
         stage('Unit and Integration Tests') {
             steps {
-                echo "Unit and Integration Tests passed"
-                echo "Junit Tool Used"
-            }
-            post {
-                success {
-                    emailext subject: "Test status success",
-                             body: "Test was success",
-                             to: "syedanfas786@gmail.com",
-                             attachLog: true // Attach build log
-                }
-                failure {
-                    emailext subject: "Test status failure",
-                             body: "Test was failure",
-                             to: "syedanfas786@gmail.com",
-                             attachLog: true // Attach build log
-                }
+                echo 'Unit and Integration Tests'
             }
         }
         stage('Code Analysis') {
             steps {
-                echo "Code Analysis completed"
-                echo "Junit Tool Used"
+                echo 'Code Analysis'
             }
         }
         stage('Security Scan') {
             steps {
-                echo "Security Scan completed"
-                echo "Jmeter Tool Used"
-            }
-            post {
-                success {
-                    emailext subject: "Security scan status success",
-                             body: "Security scan was success",
-                             to: "syedanfas786@gmail.com",
-                             attachLog: true // Attach build log
-                }
-                failure {
-                    emailext subject: "Security scan status failure",
-                             body: "Security scan was failure",
-                             to: "syedanfas786@gmail.com",
-                             attachLog: true // Attach build log
-                }
+                echo 'Security Scan'
             }
         }
         stage('Deploy to Staging') {
             steps {
-                echo "Deployed to Staging"
+                echo 'Deploy to Staging'
             }
         }
         stage('Integration Tests on Staging') {
-            steps { 
-                echo "Integration Tests on Staging passed"
-                echo "Jmeter Tool Used"
+            steps {
+                echo 'Integration Tests on Staging'
             }
         }
         stage('Deploy to Production') {
             steps {
-                echo "Deployed to Production"
+                echo 'Deploy to Production'
             }
+        }
+    }
+    post {
+        success {
+            emailext(
+                subject: "Pipeline Successful",
+                body: "The Jenkins pipeline completed successfully.",
+                to: 'ja.mujeeb.06@gmail.com',
+                attachLog: true
+                // attachmentsPattern: '**/console-log.txt'
+            )
+        }
+        failure {
+            emailext(
+                subject: "Pipeline Failed",
+                body: "The Jenkins pipeline failed. Please check the logs for details.",
+                to: 'ja.mujeeb.06@gmail.com',
+                attachLog: true
+                // attachmentsPattern: '**/console-log.txt'
+            )
         }
     }
 }
