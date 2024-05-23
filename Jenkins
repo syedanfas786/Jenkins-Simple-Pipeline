@@ -15,16 +15,16 @@ pipeline {
             }
             post {
                 success {
-                    mail to: "syedanfas786@gmail.com",
-                    subject: "Test status success",
-                    body: "Test was success",
-                    attachmentsPattern: '**/*.log' // Attach all log files
+                    emailext subject: "Test status success",
+                             body: "Test was success",
+                             to: "syedanfas786@gmail.com",
+                             attachLog: true // Attach build log
                 }
                 failure {
-                    mail to: "syedanfas786@gmail.com",
-                    subject: "Test status failure",
-                    body: "Test was failure",
-                    attachmentsPattern: '**/*.log' // Attach all log files
+                    emailext subject: "Test status failure",
+                             body: "Test was failure",
+                             to: "syedanfas786@gmail.com",
+                             attachLog: true // Attach build log
                 }
             }
         }
@@ -41,16 +41,16 @@ pipeline {
             }
             post {
                 success {
-                    mail to: "syedanfas786@gmail.com",
-                    subject: "Security scan status success",
-                    body: "Security scan was success",
-                    attachmentsPattern: '**/*.log' // Attach all log files
+                    emailext subject: "Security scan status success",
+                             body: "Security scan was success",
+                             to: "syedanfas786@gmail.com",
+                             attachLog: true // Attach build log
                 }
                 failure {
-                    mail to: "syedanfas786@gmail.com",
-                    subject: "Security scan status failure",
-                    body: "Security scan was failure",
-                    attachmentsPattern: '**/*.log' // Attach all log files
+                    emailext subject: "Security scan status failure",
+                             body: "Security scan was failure",
+                             to: "syedanfas786@gmail.com",
+                             attachLog: true // Attach build log
                 }
             }
         }
